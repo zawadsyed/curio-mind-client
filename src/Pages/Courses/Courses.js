@@ -5,11 +5,12 @@ import LeftSideBar from '../../components/LeftSideBar/LeftSideBar';
 
 const Courses = () => {
     const courses = useLoaderData();
-    console.log(courses)
     return (
-        <div className='flex'>
+        <div className='flex gap-16'>
             <div>
-                <LeftSideBar></LeftSideBar>
+                {courses.map(course => <LeftSideBar key={course.id}
+                    course={course}
+                ></LeftSideBar>)}
             </div>
             <div className='grid grid-cols-3 gap-12 col-span-10'>
                 {
