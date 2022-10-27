@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_apiKey,
-    authDomain: process.env.REACT_APP_authDomain,
-    projectId: process.env.REACT_APP_projectId,
-    storageBucket: process.env.REACT_APP_storageBucket,
-    messagingSenderId: process.env.REACT_APP_messagingSenderId,
-    appId: process.env.REACT_APP_appId
+    apiKey: "AIzaSyCW8d2i_q0xZbofQdjDIrkLddKg-GM41VQ",
+    authDomain: "curio-mind-auth.firebaseapp.com",
+    projectId: "curio-mind-auth",
+    storageBucket: "curio-mind-auth.appspot.com",
+    messagingSenderId: "242306784746",
+    appId: "1:242306784746:web:fd444bfdee53fd97362693"
 };
 
 // Initialize Firebase

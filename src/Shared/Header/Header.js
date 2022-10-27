@@ -20,9 +20,8 @@ const Header = () => {
                             user?.uid ?
                                 <>
                                     {user.displayName}
-                                    {
-                                    }
-
+                                    <img src={user.photoUrl} alt="" />
+                                    <button>Sign Out</button>
                                 </>
                                 :
                                 <>
