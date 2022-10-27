@@ -1,8 +1,4 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { Button, Image } from 'react-bootstrap';
 import img from '../../assets/curio-mind-logo.png'
 import { Link, NavLink } from 'react-router-dom';
 import { useContext } from 'react';
@@ -11,26 +7,27 @@ const Header = () => {
     const { user } = useContext(AuthContext);
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" variant="dark">
-                <Container>
-                    <Image src={img} style={{ height: '48px' }}></Image>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="ms-5 d-flex gap-3">
-                            <NavLink to="/courses">All Courses</NavLink>
-                            <NavLink to="/faq">FAQ</NavLink>
-                            <NavLink to="/blog">Blog</NavLink>
-                        </Nav>
-                        <Nav>{user ? user.displayName : <p>none</p>}
-                            <NavLink></NavLink>
-                            <Link to='/login'>
-                                <Button>Log in</Button>
-                            </Link>
-                            <Link to='register'><Button>Registration</Button></Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+            <div className="navbar bg-base-100">
+                <div className="flex-1">
+                    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                </div>
+                <div className="flex-none">
+                    <ul className="menu menu-horizontal p-0">
+                        <li><a>Item 1</a></li>
+                        <li tabIndex={0}>
+                            <a>
+                                Parent
+                                <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+                            </a>
+                            <ul className="p-2 bg-base-100">
+                                <li><a>Submenu 1</a></li>
+                                <li><a>Submenu 2</a></li>
+                            </ul>
+                        </li>
+                        <li><a>Item 3</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     );
 };
