@@ -4,6 +4,7 @@ import Main from '../layouts/Main';
 import CheckOut from '../Pages/CheckOut/CheckOut';
 import CourseDetails from '../Pages/CourseDetails/CourseDetails';
 import Courses from '../Pages/Courses/Courses';
+import Home from '../Pages/Home/Home';
 import LogIn from '../Pages/LogIn/LogIn';
 import Register from '../Pages/Register/Register';
 
@@ -13,6 +14,11 @@ export const routes = createBrowserRouter([
         errorElement: <h1>404</h1>,
         element: <Main></Main>,
         children: [
+            {
+                path: '/',
+                element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/courses')
+            },
             {
                 path: '/courses',
                 element: <Courses></Courses>,
