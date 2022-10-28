@@ -6,13 +6,13 @@ import LeftSideBar from '../../components/LeftSideBar/LeftSideBar';
 const Courses = () => {
     const courses = useLoaderData();
     return (
-        <div className='flex gap-16'>
-            <div>
+        <div className='md:flex gap-16'>
+            <aside className='w-full p-6 sm:w-60 flex flex-col'>
                 {courses.map(course => <LeftSideBar key={course.id}
                     course={course}
                 ></LeftSideBar>)}
-            </div>
-            <div className='grid grid-cols-3 gap-12 col-span-10'>
+            </aside>
+            <div className='grid grid-rows-6 lg:grid-rows-2 grid-flow-col gap-4'>
                 {
                     courses.map(course => <CourseCard
                         key={course.id}

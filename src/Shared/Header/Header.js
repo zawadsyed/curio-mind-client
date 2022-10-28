@@ -4,7 +4,12 @@ import { Link, NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+    const handleLougOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -12,19 +17,33 @@ const Header = () => {
                     <Link to='/' className="btn btn-ghost normal-case text-xl">Curio Mind</Link>
                 </div>
                 <div className="flex-none">
-                    <ul className="menu menu-horizontal p-0">
-                        <li><a>Item 1</a></li>
-                        <li tabIndex={0}>
-                            <a>
-                                Parent
-                                <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
-                            </a>
-                            <ul className="p-2 bg-base-100">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Item 3</a></li>
+                    <ul className="menu menu-horizontal p-0 items-center">
+                        <div className='menu menu-horizontal p-0 items-center gap-8'>
+                            <Link to='/courses'><li>All courses</li></Link>
+                            <Link to='/checkout'><li>Checkout</li></Link>
+                            <Link to='/blog'><li>Blog</li></Link>
+                            <Link to='/faq'><li>FAQ</li></Link>
+                        </div>
+                        <div className='mr-4'>
+                            {
+                                user?.uid && <><img title='user profile picture' className='rounded-full h-10' src={user?.photoURL} alt="" /></>
+                            }
+                        </div>
+                        <div>
+                            {
+                                user?.uid ?
+                                    <div>
+                                        < button onClick={handleLougOut} className='btn btn-outline btn-error'>
+                                            Sign Out
+                                        </button>
+                                    </div>
+                                    :
+                                    <div>
+                                        <Link className='mr-3' to='/login'><button className='btn btn-secondary text-white'>Log In</button></Link>
+                                        <Link to='/register'><button className='btn btn-primary'>Register</button></Link>
+                                    </div>
+                            }
+                        </div>
                     </ul>
                 </div>
             </div>

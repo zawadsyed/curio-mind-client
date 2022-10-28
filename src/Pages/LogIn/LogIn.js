@@ -49,6 +49,8 @@ const LogIn = () => {
                             </div>
                         </div>
                     </form>
+
+                    <h1>or log in with</h1>
                 </div>
             </div>
         </div>
