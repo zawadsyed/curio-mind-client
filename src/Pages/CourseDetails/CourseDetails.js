@@ -1,29 +1,26 @@
 import React from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
-import { FaGraduationCap, FaStar } from "react-icons/fa";
+import { useLoaderData } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import CheckOut from '../CheckOut/CheckOut';
+import Pdf from "react-to-pdf";
+import { FaGraduationCap, FaStar, FaDownload } from "react-icons/fa";
 
 const CourseDetails = () => {
     const courseDetails = useLoaderData();
     const { id, course_title, rating, details, student, price, topic, img } = courseDetails;
-    const [course, setCourse] = useState({});
-    // const navigate = useNavigate();
-
-    const sendToCheckout = (courseDetails) => {
-        setCourse(courseDetails);
-        <CheckOut course={course}></CheckOut>
-    }
-    console.log(course)
+    const ref = React.createRef();
     return (
-        <div className='mt-12'>
-            <div className="card bg-base-100 shadow-xl p-9">
+        <div className='mt-24'>
+            <div ref={ref} className="card bg-base-100 shadow-xl p-9">
                 <figure><img className='object-cover' style={{ width: '990px', height: '550px' }} src={img} alt="Shoes" /></figure>
                 <div className="card-body justify-center">
                     <div className="card-title flex flex-wrap justify-center">
                         <h1 className=' text-center justify-center font-bold text-3xl'>{course_title}</h1>
                         <div className="badge badge-secondary bg-blue-300 p-3 rounded-xl">{topic}</div>
+
+                        <Pdf targetRef={ref} filename={`Course ${id}.pdf`}>
+                            {({ toPdf }) => <button className='m-4' onClick={toPdf}>
+                                <p className='text-2xl text-blue-600 '><FaDownload></FaDownload></p></button>}
+                        </Pdf>
                     </div>
                     <p>{details}</p>
                     <div className="card-actions justify-center">
@@ -37,7 +34,7 @@ const CourseDetails = () => {
                         <span className='text-lg'>{rating?.number}</span>
                         <FaStar className='text-yellow-500'></FaStar>
                     </div>
-                    <Link to="/checkout"> <button onClick={() => sendToCheckout(courseDetails)} className='btn btn-primary rounded-xl'>Get premium access</button></Link>
+                    <Link to={`/checkout/${id}`}> <button className='btn btn-primary rounded-xl'>Get premium access</button></Link>
                 </div>
             </div>
         </div>
