@@ -34,7 +34,6 @@ const Register = () => {
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-center">
                         <h1 className="text-4xl font-bold">Please Register now!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in.</p>
                     </div>
                     {/* form starts here */}
                     <form onSubmit={handleRegister} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -58,7 +57,7 @@ const Register = () => {
                                 <input type="password" name='password' placeholder="password" className="input input-bordered" />
                                 <label className="label">
                                     <button className="btn btn-link">
-                                        <Link to='/signin'> Already Have an Account?</Link>
+                                        <Link to='/login'> Already Have an Account?</Link>
                                     </button>
                                 </label>
                             </div>

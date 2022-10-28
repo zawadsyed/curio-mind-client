@@ -5,7 +5,7 @@ const CheckOut = (props) => {
     console.log(props)
     return (
         <div>
-            This is CheckOut
+            <h1>Congratulations!! You have successfully unlocked the premium access </h1>
         </div>
     );
 };
