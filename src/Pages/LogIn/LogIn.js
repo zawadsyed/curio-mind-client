@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const LogIn = () => {
@@ -50,7 +50,7 @@ const LogIn = () => {
                         </div>
                     </form>
 
-                    <h1>or log in with</h1>
+                    <h1>New here??</h1><Link to='/register'>Register Now</Link>
                 </div>
             </div>
         </div>
